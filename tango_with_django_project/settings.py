@@ -12,6 +12,10 @@ DATABASE_PATH = os.path.join(PROJECT_PATH, 'rango.db')
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+# defines where to redirect to if user gets to a restricted area and is not logged in
+LOGIN_URL = '/rango/login/'
+
+
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )

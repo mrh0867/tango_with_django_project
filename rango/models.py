@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -14,8 +15,6 @@ class Category(models.Model):
         verbose_name_plural = "Categories"
 
 
-
-
 class Page(models.Model):
     category = models.ForeignKey(Category)
     title = models.CharField(max_length=128)
@@ -24,3 +23,16 @@ class Page(models.Model):
 
     def __unicode__(self):
         return self.title
+
+
+class UserProfile(models.Model):
+    # required, links to User model
+    user = models.OneToOneField(User)
+
+    # additional attributes
+    website = models.URLField(blank=True)
+    picture = models.ImageField(upload_to='profile_images', blank=True)
+
+    def __unicode__(self):
+        return self.user.username
+
